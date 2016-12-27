@@ -1,0 +1,29 @@
+from selenium import webdriver
+import os
+
+CURRENT_DIR = os.getcwd()
+
+class Singleton(object):
+
+    instance = None
+    browser = ''
+    WAIT_CONST = 5
+
+    FIREFOX = 'firefox'
+    CHROME = 'chrome'
+    IE = 'IE'
+
+    def __new__(cls):
+        if cls.instance is None:
+            cls.instance = object.__new__(cls)
+            if cls.browser == 'firefox':
+                cls.driver = webdriver.Firefox()
+            elif cls.browser == 'chrome':
+                cls.driver = webdriver.Chrome(CURRENT_DIR + '/drivers/chromedriver.exe')
+            elif cls.browser == 'IE':
+#                print CURRENT_DIR + '\drivers\IEDriverServer.exe'
+                cls.driver = webdriver.Ie(CURRENT_DIR + '\drivers\IEDriverServer.exe')
+            else:
+                raise Exception("Specified browser is wrong")
+#                exit()
+        return cls.instance

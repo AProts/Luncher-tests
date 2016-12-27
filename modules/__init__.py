@@ -1,0 +1,16 @@
+"""
+======
+Common
+======
+"""
+__version__ = '0.1'
+
+#: timeout value in s as an integer
+timeout_seconds = 60
+
+#: timout value in ms as an integer
+timeout_microseconds = timeout_seconds * 1000
+
+#: timout value in ms as a string
+string_timeout = str(timeout_microseconds)
+
